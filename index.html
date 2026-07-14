@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>JEM Studio: a private, on-device video editor for iOS</title>
-<meta name="description" content="JEM Studio is a native iOS short-form video editor. Import clips and photos, edit on a timeline, and export watermark-free. Everything happens on your device.">
+<meta name="description" content="JEM Studio is a native iPhone editor for short-form video. Import, trim, add text and sound, and export watermark-free. Nothing leaves your device.">
 <meta name="color-scheme" content="light dark">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/png" href="icon-180.png">
@@ -31,13 +31,52 @@
 <main id="main">
   <div class="wrap">
     <section class="hero">
-      <span class="eyebrow">Video editor for iOS</span>
-      <h1>Edit short videos, and keep your footage yours.</h1>
-      <p class="lede">JEM Studio is a native iOS editor for short-form video. Import your clips and photos, edit them on a timeline, and export watermark-free. Everything happens on your device.</p>
+      <div class="hero-copy">
+        <span class="kicker">On-device video editor for iOS</span>
+        <h1>Cut it here. Keep it yours.</h1>
+        <p class="lede">JEM Studio is a native iPhone editor for short-form video. Import, trim, add text and sound, and export watermark-free. Nothing leaves your device.</p>
+        <ul class="pipeline" aria-label="Editing flow">
+          <li>Import</li>
+          <li>Trim</li>
+          <li>Text</li>
+          <li>Sound</li>
+          <li>Export</li>
+        </ul>
+      </div>
+      <div class="gem">
+        <img src="icon.png" width="172" height="172" alt="The JEM Studio app icon: a faceted gem with a magenta play symbol." decoding="async">
+      </div>
     </section>
 
-    <section aria-labelledby="what">
-      <h2 id="what">What it does</h2>
+    <section aria-labelledby="facets-h">
+      <div class="section-head">
+        <span class="kicker">Why JEM Studio</span>
+        <h2 id="facets-h">Three facets of one editor</h2>
+      </div>
+      <div class="facets">
+        <div class="facet">
+          <div class="facet-mark" aria-hidden="true"></div>
+          <h3>Reliable</h3>
+          <p>Autosave and crash recovery mean an interrupted edit is not a lost edit. Losing your work is the failure we care most about preventing.</p>
+        </div>
+        <div class="facet">
+          <div class="facet-mark" aria-hidden="true"></div>
+          <h3>Honest</h3>
+          <p>No ads, no trackers, and no upsell maze. The editor is the product, not your attention.</p>
+        </div>
+        <div class="facet">
+          <div class="facet-mark" aria-hidden="true"></div>
+          <h3>Private</h3>
+          <p>No account, no cloud, and no data collection. Your footage never leaves your device unless you export or share it. See the <a href="privacy/">privacy policy</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="specs-h">
+      <div class="section-head">
+        <span class="kicker">Capabilities</span>
+        <h2 id="specs-h">What it does</h2>
+      </div>
       <ul class="cards">
         <li>
           <h3>Import</h3>
@@ -57,34 +96,24 @@
         </li>
         <li>
           <h3>Export clean</h3>
-          <p>Save finished videos watermark-free straight to your camera roll.</p>
+          <p>Save finished videos watermark-free, straight to your camera roll.</p>
         </li>
         <li>
           <h3>Work offline</h3>
           <p>No account and no connection required. Editing and export run entirely on your device.</p>
         </li>
       </ul>
-    </section>
 
-    <section aria-labelledby="commitments">
-      <h2 id="commitments">Built on three commitments</h2>
-      <h3>Reliability</h3>
-      <p>Autosave and crash recovery mean an interrupted edit is not a lost edit. Losing your work is the failure we care most about preventing.</p>
-      <h3>Honesty</h3>
-      <p>No ads, no trackers, and no upsell maze. The editor is the product, not your attention.</p>
-      <h3>Privacy</h3>
-      <p>No account, no cloud, and no data collection. Your media never leaves your device unless you choose to export or share it. Read the full <a href="privacy/">privacy policy</a>.</p>
+      <div class="note">
+        <p class="meta">JEM Studio is a native iPhone app, in active development. It has no backend, no advertising, and no analytics that leave your device.</p>
+      </div>
     </section>
-
-    <div class="note">
-      <p class="meta">JEM Studio is a native app for iPhone, in active development. It has no backend, no advertising, and no analytics that leave your device.</p>
-    </div>
   </div>
 </main>
 
 <footer class="site">
   <div class="wrap">
-    <span>&copy; 2026 JEM Studio</span>
+    <span class="fbrand">&copy; 2026 JEM Studio</span>
     <nav aria-label="Footer">
       <a href="./">Home</a>
       <a href="privacy/">Privacy</a>

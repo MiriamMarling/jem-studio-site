@@ -1,70 +1,70 @@
-/* JEM Studio site styles. Self-contained: no external fonts, CDNs, or trackers. */
+/* JEM Studio site styles. Self-contained: no external fonts, CDNs, or trackers.
+   Type identity uses only platform system fonts:
+   New York serif (display) + San Francisco (body) + monospace (timecode-style labels). */
 
 :root {
   color-scheme: light dark;
 
-  /* Brand palette, drawn from the app icon (coral, magenta, violet, faceted lavender). */
+  --font-serif: ui-serif, "New York", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Menlo", "Cascadia Code", Consolas, monospace;
+
+  /* Brand gradient, drawn from the app icon. Kept contained to the gem. */
   --coral: #f98a3c;
   --magenta: #e12c74;
-  --play: #d81e6d;
   --violet: #7c3aa0;
+  --lavender: #c7cce8;
 
-  /* Light theme tokens. Text colors chosen to pass WCAG AA on the paper background. */
-  --paper: #fbfafc;
+  /* Light theme. Text colors pass WCAG AA on --paper. */
+  --paper: #fbf9fb;
   --surface: #ffffff;
-  --ink: #1b1424;        /* headings */
-  --body: #37303f;       /* body text: ~10:1 on paper */
-  --muted: #5b5468;      /* secondary text: ~5.4:1 on paper */
-  --line: #e7e2ec;
-  --link: #a3195e;       /* magenta-ink link: ~5.9:1 on paper */
-  --link-hover: #7c1247;
-  --accent: var(--violet);
-  --card: #ffffff;
-  --card-line: #ece7f1;
+  --ink: #17101f;        /* display headings */
+  --body: #38313f;       /* body text ~10:1 */
+  --muted: #5f5769;      /* secondary ~5.4:1 */
+  --line: #e9e3ee;
+  --card-line: #ece6f1;
+  --link: #b0195f;       /* magenta-ink link ~5.6:1 */
+  --link-hover: #85114a;
   --focus: #6a2a9e;
-  --code-bg: #f2eef6;
+  --panel-tint: #f6f1f8;
+  --shadow: rgba(23, 16, 31, 0.14);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #141019;
-    --surface: #1c1626;
-    --ink: #f4f0f8;
-    --body: #d9d2e2;       /* ~11:1 on paper */
-    --muted: #a89fb6;      /* ~5.2:1 on paper */
-    --line: #2c2438;
-    --link: #f4a6c9;       /* light magenta: ~7:1 on dark paper */
-    --link-hover: #f8c4dc;
-    --accent: #c79be6;
-    --card: #1c1626;
-    --card-line: #2f2740;
+    --paper: #121019;
+    --surface: #1b1526;
+    --ink: #f5f1f8;
+    --body: #dad3e2;       /* ~11:1 */
+    --muted: #a79eb5;      /* ~5.3:1 */
+    --line: #2b2338;
+    --card-line: #302840;
+    --link: #f6a8cb;       /* ~7:1 on dark paper */
+    --link-hover: #fac8dd;
     --focus: #d9b3f2;
-    --code-bg: #241d31;
+    --lavender: #b9c0e4;
+    --panel-tint: #201829;
+    --shadow: rgba(0, 0, 0, 0.5);
   }
 }
 
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
-html {
-  -webkit-text-size-adjust: 100%;
-}
+html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
   background: var(--paper);
   color: var(--body);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 17px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Skip link for keyboard users. */
 .skip-link {
   position: absolute;
   left: -999px;
@@ -76,47 +76,59 @@ body {
   border-radius: 8px;
   z-index: 100;
 }
-.skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-}
+.skip-link:focus { left: 1rem; top: 1rem; }
 
 .wrap {
   width: 100%;
-  max-width: 760px;
+  max-width: 820px;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 1.4rem;
 }
 
-/* The gradient hairline echoes the icon without shouting. */
+/* Shared label style: monospace, tracked out, like an editor's timecode readout. */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--magenta);
+}
+
+/* --- Top gradient hairline: the only place the full gradient runs edge to edge. --- */
 .topbar {
-  height: 4px;
-  background: linear-gradient(90deg, var(--coral), var(--magenta) 45%, var(--violet));
+  height: 3px;
+  background: linear-gradient(90deg, var(--coral), var(--magenta) 48%, var(--violet));
 }
 
+/* --- Header --- */
 header.site {
   border-bottom: 1px solid var(--line);
-  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: saturate(1.4) blur(8px);
 }
 header.site .wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
   flex-wrap: wrap;
 }
-
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   text-decoration: none;
   color: var(--ink);
+  font-family: var(--font-sans);
   font-weight: 700;
-  letter-spacing: -0.01em;
-  font-size: 1.12rem;
+  font-size: 1.14rem;
+  letter-spacing: -0.02em;
 }
 .brand:focus-visible {
   outline: 3px solid var(--focus);
@@ -128,126 +140,177 @@ header.site .wrap {
   height: 30px;
   flex: 0 0 auto;
   display: block;
-  border-radius: 7px;
-  box-shadow: 0 1px 2px rgba(27, 20, 36, 0.18);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px var(--shadow);
 }
-
-nav.site {
-  display: flex;
-  gap: 1.15rem;
-  flex-wrap: wrap;
-}
+nav.site { display: flex; gap: 1.3rem; flex-wrap: wrap; }
 nav.site a {
   color: var(--body);
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   padding: 0.15rem 0;
   border-bottom: 2px solid transparent;
 }
-nav.site a:hover {
-  color: var(--link);
-  border-bottom-color: var(--magenta);
-}
-nav.site a[aria-current="page"] {
-  color: var(--ink);
-  border-bottom-color: var(--magenta);
-}
+nav.site a:hover { color: var(--link); border-bottom-color: var(--magenta); }
+nav.site a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--magenta); }
 nav.site a:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-main {
-  padding: 2.5rem 0 1rem;
-}
+main { padding: clamp(2rem, 6vw, 3.75rem) 0 1rem; }
 
+/* --- Hero --- */
 .hero {
-  padding: 1rem 0 2.25rem;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(1.5rem, 5vw, 3rem);
+  align-items: center;
+  padding-bottom: clamp(2rem, 6vw, 3.25rem);
 }
-.hero .eyebrow {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--magenta);
-  margin: 0 0 0.75rem;
-}
+.hero .kicker { display: block; margin-bottom: 1rem; }
 h1 {
+  font-family: var(--font-sans);
   color: var(--ink);
-  font-size: clamp(1.9rem, 6vw, 2.65rem);
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  margin: 0 0 0.9rem;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5.8vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.022em;
+  margin: 0 0 1.1rem;
 }
 .hero p.lede {
-  font-size: 1.18rem;
+  font-size: 1.16rem;
   color: var(--body);
-  margin: 0;
-  max-width: 46ch;
+  margin: 0 0 1.5rem;
+  max-width: 42ch;
 }
 
+/* The editing pipeline, as a genuine sequence: import, then edit, then export. */
+.pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.7rem;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pipeline li { display: inline-flex; align-items: center; gap: 0.7rem; margin: 0; }
+.pipeline li:not(:last-child)::after {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--magenta), transparent);
+}
+.pipeline .on { color: var(--ink); }
+
+/* The gem: the real app icon on a faceted light panel with a cut corner. */
+.gem {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.6rem, 5vw, 2.9rem);
+  background: var(--panel-tint);
+  border: 1px solid var(--card-line);
+  /* one facet sliced off the top-right corner: the cut */
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+  filter: drop-shadow(0 20px 44px var(--shadow));
+  overflow: hidden;
+}
+.gem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--coral) 20%, transparent), transparent 44%),
+    linear-gradient(305deg, color-mix(in srgb, var(--violet) 24%, transparent), transparent 52%);
+}
+.gem::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(116deg, transparent 45%, color-mix(in srgb, var(--surface) 70%, transparent) 46.5%, transparent 48%);
+}
+.gem img {
+  position: relative;
+  width: clamp(112px, 30vw, 172px);
+  height: auto;
+  border-radius: 24%;
+  box-shadow: 0 12px 30px rgba(23, 16, 31, 0.32);
+}
+
+/* --- Sections --- */
+section { margin-top: clamp(2.75rem, 7vw, 4.25rem); }
+.section-head { margin-bottom: 1.5rem; }
+.section-head .kicker { display: block; margin-bottom: 0.6rem; }
 h2 {
+  font-family: var(--font-sans);
   color: var(--ink);
-  font-size: 1.4rem;
-  letter-spacing: -0.01em;
-  margin: 2.4rem 0 0.6rem;
+  font-weight: 700;
+  font-size: clamp(1.55rem, 3.5vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0;
 }
 h3 {
+  font-family: var(--font-sans);
   color: var(--ink);
-  font-size: 1.08rem;
-  margin: 1.5rem 0 0.35rem;
+  font-weight: 650;
+  font-size: 1.16rem;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.35rem;
 }
-
-p {
-  margin: 0 0 1rem;
-}
-
+p { margin: 0 0 1rem; }
 a {
   color: var(--link);
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
 }
-a:hover {
-  color: var(--link-hover);
-}
+a:hover { color: var(--link-hover); }
 a:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
   border-radius: 3px;
 }
+strong { color: var(--ink); font-weight: 640; }
 
-strong {
-  color: var(--ink);
-  font-weight: 650;
+/* Three facets: the commitments, presented as cut planes of one stone. */
+.facets { display: grid; gap: 1.6rem; }
+@media (min-width: 620px) { .facets { grid-template-columns: repeat(3, 1fr); gap: 1.9rem; } }
+.facet { position: relative; padding-top: 1.1rem; border-top: 1px solid var(--line); }
+.facet-mark {
+  width: 16px;
+  height: 16px;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, var(--coral), var(--magenta) 55%, var(--violet));
+  transform: rotate(45deg);
+  border-radius: 2px;
 }
+.facet p { color: var(--body); margin-bottom: 0; }
 
-ul {
-  padding-left: 1.2rem;
-  margin: 0 0 1rem;
-}
-li {
-  margin: 0.3rem 0;
-}
-
-/* Feature cards with a faceted corner accent. */
+/* Capability cards. The gradient corner reads as a cut facet. */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
-  margin: 1.4rem 0 0.5rem;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 .cards li {
   position: relative;
   overflow: hidden;
-  background: var(--card);
+  background: var(--surface);
   border: 1px solid var(--card-line);
   border-radius: 14px;
-  padding: 1.1rem 1.15rem 1.15rem;
+  padding: 1.15rem 1.2rem 1.25rem;
   margin: 0;
 }
 .cards li::before {
@@ -255,95 +318,92 @@ li {
   position: absolute;
   top: 0;
   right: 0;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   background: linear-gradient(135deg, var(--coral), var(--magenta) 55%, var(--violet));
-  opacity: 0.16;
+  opacity: 0.18;
   clip-path: polygon(100% 0, 0 0, 100% 100%);
 }
-.cards li h3 {
-  margin-top: 0;
+.cards .term {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin-bottom: 0.5rem;
 }
-.cards li p {
-  margin-bottom: 0;
-  color: var(--muted);
-  font-size: 0.97rem;
-}
+.cards h3 { margin: 0 0 0.3rem; font-size: 1.08rem; }
+.cards p { margin: 0; color: var(--muted); font-size: 0.97rem; }
 
-/* Callout box. */
+/* Callout with a cut corner. */
 .note {
-  background: var(--code-bg);
+  position: relative;
+  background: var(--panel-tint);
   border: 1px solid var(--card-line);
-  border-radius: 12px;
-  padding: 1rem 1.15rem;
-  margin: 1.4rem 0;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+  padding: 1.15rem 1.3rem;
+  margin: 1.6rem 0;
 }
-.note p:last-child {
-  margin-bottom: 0;
+.note p:last-child { margin-bottom: 0; }
+
+.meta { color: var(--muted); font-size: 0.94rem; }
+.email { font-weight: 640; white-space: nowrap; }
+
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+
+/* Long-form text pages */
+.prose h2 { margin-top: 2.4rem; }
+.prose h2:first-of-type { margin-top: 1.6rem; }
+.prose ul { padding-left: 1.15rem; margin: 0 0 1rem; }
+.prose li { margin: 0.35rem 0; }
+.lead {
+  font-size: 1.16rem;
+  color: var(--body);
+  margin: 0 0 1.5rem;
+  max-width: 52ch;
 }
 
-.meta {
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-.email {
-  font-weight: 650;
-  white-space: nowrap;
-}
-
-hr {
-  border: 0;
-  border-top: 1px solid var(--line);
-  margin: 2.25rem 0;
-}
-
+/* --- Footer --- */
 footer.site {
   border-top: 1px solid var(--line);
-  margin-top: 3rem;
-  padding: 1.75rem 0 2.5rem;
+  margin-top: clamp(3rem, 8vw, 4.5rem);
+  padding: 1.9rem 0 2.75rem;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 footer.site .wrap {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1rem 1.5rem;
   flex-wrap: wrap;
   align-items: center;
 }
-footer.site nav {
-  display: flex;
-  gap: 1.1rem;
-  flex-wrap: wrap;
-}
-footer.site a {
-  color: var(--body);
-  text-decoration: none;
-}
-footer.site a:hover {
-  color: var(--link);
-  text-decoration: underline;
-}
+footer.site .fbrand { font-family: var(--font-mono); letter-spacing: 0.04em; }
+footer.site nav { display: flex; gap: 1.3rem; flex-wrap: wrap; }
+footer.site a { color: var(--body); text-decoration: none; }
+footer.site a:hover { color: var(--link); text-decoration: underline; }
 
 /* 404 */
-.center {
-  text-align: center;
-  padding: 3rem 0;
-}
+.center { text-align: center; padding: clamp(2.5rem, 8vw, 4.5rem) 0; }
 .center .mark-lg {
-  width: 76px;
-  height: 76px;
-  margin: 0 auto 1.25rem;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1.5rem;
   display: block;
-  border-radius: 17px;
-  box-shadow: 0 4px 14px rgba(27, 20, 36, 0.22);
+  border-radius: 22%;
+  box-shadow: 0 10px 30px var(--shadow);
 }
 
+/* --- Responsive --- */
+@media (max-width: 680px) {
+  .hero { grid-template-columns: 1fr; }
+  .gem { order: -1; justify-self: start; padding: clamp(1.4rem, 8vw, 2rem); }
+  .gem img { width: clamp(104px, 32vw, 148px); }
+}
 @media (max-width: 480px) {
   body { font-size: 16px; }
-  main { padding-top: 1.75rem; }
-  header.site .wrap { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+  header.site .wrap { padding-top: 0.7rem; padding-bottom: 0.7rem; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
