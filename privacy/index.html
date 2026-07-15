@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy · JEM Studio</title>
-<meta name="description" content="JEM Studio privacy policy. No account, no backend, no advertising, and no analytics that leave your device. Editing and export happen on your device.">
+<meta name="description" content="JEM Studio privacy policy. No account, no backend, no advertising, and no tracking. Editing and export happen on your device, and anonymous usage statistics are off by default.">
 <meta name="color-scheme" content="light dark">
 <link rel="stylesheet" href="../styles.css">
 <link rel="icon" type="image/png" href="../icon-180.png">
@@ -30,39 +30,51 @@
 
 <main id="main">
   <div class="wrap prose">
-    <span class="kicker">Effective July 14, 2026</span>
+    <span class="kicker">Effective July 15, 2026</span>
     <h1>Privacy Policy</h1>
 
-    <p class="lead">JEM Studio is built to respect your privacy. In plain terms: your videos, photos, and audio stay on your device, and we do not collect your personal data.</p>
+    <p class="lead">JEM Studio is built to respect your privacy. In plain terms: there is no account and no server of our own, JEM Studio does not upload your videos, photos, or audio, and the optional anonymous usage statistics are off by default.</p>
 
-    <h2>No account, no backend, no data collection</h2>
-    <p>JEM Studio does not require an account, and it has no server or backend of its own. There is no sign-up, no login, and no user profile. It does not collect, store, or transmit your personal information to us or to anyone else. Everything the app needs lives on your device.</p>
+    <h2>No account and no backend</h2>
+    <p>JEM Studio does not require an account, and it has no server or backend of its own. There is no sign-up, no login, and no user profile. It does not collect your name, email address, contact information, or any other personal profile information. The optional display name used for your initials is stored only on your device.</p>
 
-    <h2>Everything happens on your device</h2>
-    <p>All editing and export, including importing, trimming, splitting, adding text, adding audio, and saving your finished video, is performed locally on your device. Your media is never uploaded to us or to any third party.</p>
+    <h2>Editing happens on your device</h2>
+    <p>All editing and export, including importing, trimming, splitting, adding text, adding audio, and saving your finished video, is performed locally on your device. JEM Studio does not upload your media or projects to us or to anyone else. Because the work happens on your device, the editor keeps working with no internet connection.</p>
 
     <h2>Photo and media library</h2>
     <p>When you add media, JEM Studio uses Apple's system photo picker. The app can only access the specific photos or videos you choose. It does not scan, read, or upload your photo library.</p>
     <p>If an item you pick is stored in iCloud and is not fully downloaded to your device, Apple Photos may need to download it first before JEM Studio can use it. That download is handled by Apple's system, not by JEM Studio, and the media still is not sent to us.</p>
 
     <h2>Saving and sharing</h2>
-    <p>Exported videos are saved to your device's camera roll only when you choose to export. If you share a video, it is sent through the destination you select using Apple's standard share sheet. JEM Studio does not send it anywhere on its own.</p>
+    <p>Exported videos are saved to your device's camera roll only when you choose to export. If your camera roll syncs with iCloud Photos, Apple syncs that video according to your own iCloud settings. That is Apple's sync, not JEM Studio's. If you share a video, it is sent through the destination you select using Apple's standard share sheet. JEM Studio does not send it anywhere on its own.</p>
 
-    <h2>No tracking, no ads, no transmitted analytics</h2>
-    <p>This version of JEM Studio contains no advertising, no third-party trackers, and no analytics that leave your device. It does not use analytics SDKs, and it does not transmit usage data.</p>
-    <p>The app includes an optional analytics preference so you can decide in advance whether you would ever allow anonymous, non-identifying usage statistics. In this version that preference only records your choice on your device. It does not send anything. If a future version can actually transmit anonymous statistics, that option will be off by default, clearly disclosed, and this policy and the App Store privacy label will be updated before that version ships. Anonymous statistics would never include your media, project content, entered text, or any identifier tied to you, and turning the preference off would stop collection immediately.</p>
+    <h2>No tracking and no ads</h2>
+    <p>JEM Studio contains no advertising and no third-party trackers. Nothing it sends is ever used to track you across apps or websites, shared with data brokers, or used for advertising.</p>
+
+    <h2>Optional anonymous usage statistics</h2>
+    <p>The <strong>Share anonymous usage</strong> setting in the app is <strong>off by default</strong>, and while it is off JEM Studio sends no analytics at all. If you choose to turn it on, the app sends the following to TelemetryDeck, and nothing else:</p>
+    <ul>
+      <li>A random per-install identifier, hashed on your device before it is sent.</li>
+      <li>A random session identifier that changes every time the app launches.</li>
+      <li>An app-launch event.</li>
+      <li>An export-completion event, with a true or false value for whether the export saved to Photos.</li>
+      <li>A Test Mode flag on development builds, so test events stay separate from real ones.</li>
+    </ul>
+    <p>That list is complete. It never includes your media, project names or content, file names, text you enter, contact information, an advertising identifier, or any identifier derived from your device or your Apple account. The random install identifier is not tied to you, and there is no account for it to be tied to. The app does not send a precise event timestamp; TelemetryDeck records the time it receives an event, and states that it does not store IP addresses.</p>
+    <p>Turning the setting off stops new events immediately and deletes the local identifier. If you turn it on again later, the app creates a new identifier that cannot be linked to the earlier period.</p>
+    <p>TelemetryDeck is operated by TelemetryDeck GmbH and hosts its analytics infrastructure in the European Union. See <a href="https://telemetrydeck.com/privacy/">TelemetryDeck's privacy information</a> for details.</p>
 
     <h2>Bundled music</h2>
-    <p>JEM Studio includes public-domain and Creative Commons licensed music (see the in-app credits). This bundled content does not collect any data.</p>
+    <p>JEM Studio includes public-domain and Creative Commons licensed music. Every track's source and license is listed in the app under Music Credits. This bundled content does not collect any data.</p>
 
     <h2>Children</h2>
-    <p>JEM Studio is suitable for all ages and collects no data from anyone, including children.</p>
+    <p>JEM Studio is suitable for all ages. Usage statistics are off by default, and the app does not collect personal information from anyone, including children.</p>
 
     <h2>Changes to this policy</h2>
     <p>If this policy changes, the updated version will be posted here with a new effective date.</p>
 
     <h2>Contact</h2>
-    <p>Questions about your privacy? Email <a class="email" href="mailto:jemcut@icloud.com">jemcut@icloud.com</a>.</p>
+    <p>Questions about your privacy? Email <a class="email" href="mailto:jemcut@icloud.com">jemcut@icloud.com</a>, or see the <a href="../support/">support page</a>.</p>
   </div>
 </main>
 
